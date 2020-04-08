@@ -1,0 +1,22 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: teal;
+}
+#container{
+    background-color: lightgreen;
+    width: 600px;
+    height: 200px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn{
+    height: 40px;
+    width: 100px;
+    background-color: rgb(179, 124, 124);
+}
