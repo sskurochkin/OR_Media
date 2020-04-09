@@ -20,3 +20,23 @@ body{
     width: 100px;
     background-color: rgb(179, 124, 124);
 }
+.flex-wrapper{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 70%;
+	height: 30vh;
+	border: 4px solid orange;
+	padding: 15px;
+	background-color: yellow;
+}
+.flex-item{
+	width: 25%;
+	height: 120px;
+	background-color: #ddd;
+	border: 2p solid black;
+	margin: 0 15px;
+}
+.flex-item:nth-child(2){
+	width: 40%;
+}
