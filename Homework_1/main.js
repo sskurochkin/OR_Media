@@ -20,19 +20,18 @@ var term = {
 };
 
 //Среднее значение температуры
-// function summaryTerm() {
-// 	var sum = 0;
-// 	for (var temperature of Object.values(term)) {
-// 	sum += temperature;
-// 	}
-// 	return midlleTerm = sum / Object.keys(term).length;
-// }
+function summaryTerm() {
+	var sum = 0;
+	for (var temperature of Object.values(term)) {
+	sum += temperature;
+	}
+	return midlleTerm = sum / Object.keys(term).length;
+}
+console.log(summaryTerm(term));
 
-// console.log(summaryTerm(term));
-
+//Максимальное значение температуры
 function maxTemp(){
-   for (var prop in term) {
-    console.log(term[prop]);
-   }
+	var allTemp = Object.values(term);
+	return maxTemp = Math.max.apply(null, allTemp);
 }
 console.log(maxTemp(term));
