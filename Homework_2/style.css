@@ -4,3 +4,6 @@ span{
 .task{
     cursor: pointer;
 }
+.done{
+    text-decoration: overline;
+}

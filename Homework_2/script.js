@@ -4,6 +4,12 @@ var userInfo = {
     name : 'Semen',
     surname : 'Kurochkin',
 };
+// var task = document.querySelectorAll('li');
+var data = new Date(),
+    year = data.getFullYear(),
+    month = data.getMonth(),
+    day = data.getDate();
+var currentData = day + '.' + month + '.' + year;
 
 //addEventListener - обработка события с последующим выполнением функции
 
@@ -17,7 +23,7 @@ inputData.addEventListener('keypress', function(keyPressed){
         var newTodo = this.value; //получение введенных данных
         this.value = '';
 
-        menuList.appendChild(newLi).append(newSpan, newTodo);
+        menuList.appendChild(newLi).append(newSpan, currentData, ' - ', newTodo);
     }   
 
 });
@@ -25,16 +31,7 @@ inputData.addEventListener('keypress', function(keyPressed){
 //Информация об авторе
 function showInfo(){
 	alert('Автор:' + ' ' + userInfo.name + ' ' + userInfo.surname);
-};
+}
 
-
+console.log(currentData);
 // Выполнение задачи
-var task = document.querySelectorAll('.task');
-
-task.addEventListener('click', function doneTask(onclick) {
-	if (menuList.style(textDecoration == null) || menuList.style(textDecoration ==' ')) {
-		menuList.style(textDecoration == 'underline');
-	} else {
-		menuList.style(textDecoration == 'none');
-	};
-});
