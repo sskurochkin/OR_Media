@@ -1,17 +1,51 @@
-﻿var inputData = document.querySelector('input[type="text"]');
-var menuList = document.getElementById('list');
-var userInfo = {
-    name : 'Semen',
-    surname : 'Kurochkin',
+﻿var inputData = document.querySelector('input[type="text"]'),
+    spans = document.getElementsByTagName('span'),
+    saveBtn = document.getElementById('save'),
+    clearBtn = document.getElementById('clear'),
+    tasks = document.getElementsByTagName('li'),
+    menuList = document.getElementById('list'),
+    userInfo = {
+        name : 'Semen',
+        surname : 'Kurochkin',
 };
-// var task = document.querySelectorAll('li');
 var data = new Date(),
     year = data.getFullYear(),
-    month = data.getMonth(),
+    month = data.getMonth() + 1,
     day = data.getDate();
 var currentData = day + '.' + month + '.' + year;
 
-//addEventListener - обработка события с последующим выполнением функции
+// Выполнение задачи
+function doneTask(){
+    for(let task of tasks){
+        task.addEventListener('click', function(){
+            task.classList.toggle('done');
+            event.preventDefault();
+        });
+    }
+}
+
+//Удаление задачи
+function deleteTodo(){
+    for(let span of spans){
+        span.addEventListener('click', function(){
+            span.parentElement.remove();
+            event.preventDefault();
+        });
+    }
+}
+
+//Информация об авторе
+function showInfo(){
+	alert('Автор:' + ' ' + userInfo.name + ' ' + userInfo.surname);
+}
+
+function loadTodo(){
+    if(localStorage.getItem('todoApplication')){
+        menuList.innerHTML = localStorage.getItem('todoApplication');
+        deleteTodo();
+    }
+}
+// addEventListener - обработка события с последующим выполнением функции
 
 inputData.addEventListener('keypress', function(keyPressed){
     
@@ -25,13 +59,23 @@ inputData.addEventListener('keypress', function(keyPressed){
 
         menuList.appendChild(newLi).append(newSpan, currentData, ' - ', newTodo);
     }   
+    doneTask();
+    deleteTodo();
+  
 
 });
 
-//Информация об авторе
-function showInfo(){
-	alert('Автор:' + ' ' + userInfo.name + ' ' + userInfo.surname);
-}
+saveBtn.addEventListener('click', function(){
+    localStorage.setItem('todoApplication', menuList.innerHTML);
+});
 
-console.log(currentData);
-// Выполнение задачи
+clearBtn.addEventListener('click', function(){
+    menuList.innerHTML = '';
+    localStorage.setItem('todoApplication', menuList.innerHTML);
+});
+
+doneTask();
+
+deleteTodo();
+
+loadTodo();

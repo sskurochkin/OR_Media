@@ -12,11 +12,12 @@ function changeBody(){
 
 //Второе задание
 var term = {
-	belarus: 22,
-	spain: 18,
-	germany: 12,
+	belarus: 15,
+	spain: 13,
+	germany: 13,
 	poland: 11,
 	russia: 12,
+	sweden: 13,
 };
 
 //Среднее значение температуры
