@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ToDo-Application</title>
     <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>ToDo-Application</h1>
+    <h1>Что я должен сделать</h1>
     <section class="todo">
-        <input type="text" placeholder="Введите задачу" value="">
-        <input type="button" value="Информация об авторе" onclick="showInfo()">
-        <ul id="list">
-            <li class="task" onclick="doneTask()"><span>Delete</span> Задача 1</li>
-            <li class="task"><span>Delete</span> Задача 2</li>
-            <li class="task"><span>Delete</span> Задача 3</li>
-            <li class="task"><span>Delete</span> Задача 4</li>
-        </ul>
+        <div class="input">
+            <input type="text" placeholder="Введите задачу" value="" class="task">
+        </div>
+        <div class="ullist">
+            <ul id="list">
+            </ul>
+        </div>
+        <div class="btn-box">
+            <button id="save">Сохранить все</button>
+            <button id="clear">Очистить все</button>
+        </div>
+        <button class="info" value="" onclick="showInfo()">Информация об авторе</button>      
     </section>
-    
-
     <script src="./script.js"></script>
 </body>
 </html>

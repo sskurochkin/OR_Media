@@ -1,9 +1,76 @@
+*{
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: lightblue;
+}
+.todo{
+    background: lightgoldenrodyellow;
+    box-shadow: black 2px 2px 10px;
+    display: flex;
+    flex-direction: column;
+    width: 660px;
+    padding: 10px;
+    border-radius: 5px;
+}
+h1{
+    text-align: center;
+    font-weight: 700;
+    margin-top: 50px;
+    margin-bottom: 8px;
+}
+.input{
+    margin-bottom: 20px;
+}
+input[type="text"]{
+    width: 400px;
+    height: 25px;
+    border-radius: 3px; 
+}
+input[type="text"]:focus{
+    border-color: rgb(16, 172, 219);
+}
+.ullist{
+    width: 100%;
+    padding: 10px 10px 10px 30px;
+    border: 2px burlywood solid;
+    margin-bottom: 10px;
+}
+#list{
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    padding-inline-start: 0;
+    flex-wrap: wrap;
+}
 span{
     color: red;
+    font-weight: bold;
 }
-.task{
+li{
     cursor: pointer;
+    flex: 0 0 50%;
+    margin: 0 0 5px;
 }
 .done{
-    text-decoration: overline;
+    text-decoration: line-through;
+}
+.btn-box{
+    margin-bottom: 5px;
+}
+button{
+    height: 25px;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    border-radius: 2px;
+    margin: 5px;
+}
+button:hover{
+    border-color: rgb(16, 172, 219);
+}
+.info{
+    width: 30%;
+    margin: 0 auto;
 }
