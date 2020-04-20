@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <form id="box" action="">
+            <div>
+                <label for="title">Название книги</label>
+                <input id="title" type="text">
+            </div>
+            <div>
+                <label for="author">Автор</label>
+                <input id="author" type="text">
+            </div>
+            <div>
+                <label for="editYear">Год издания</label>
+                <input id="editYear" type="text">
+            </div>
+            <div>
+                <input type="submit" value="Добавить книгу">
+            </div>
+        </form>
+
+        <ol id="list-books">
+            <ul class="head-title">
+                <li>Название книги</li>
+                <li>Автор</li>
+                <li>Год издания</li>
+                <li>()</li>
+            </ul>
+            
+
+        </ol>
+
+
+
+    </div>
+    <script src="book.js"></script>
+    <script src="viewbook.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
