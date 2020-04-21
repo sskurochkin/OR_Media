@@ -1,4 +1,4 @@
-document.querySelector('#books').addEventListener('submit', function(event){
+document.querySelector('#box').addEventListener('submit', function (event) {
     var title = document.querySelector('#title').value;
     var author = document.querySelector('#author').value;
     var editYear = document.querySelector('#editYear').value;
@@ -6,10 +6,35 @@ document.querySelector('#books').addEventListener('submit', function(event){
     var book = new Book(title, author, editYear);
     var viewbook = new Viewbook();
 
-    if(title === '' || author === '' || editYear === ''){
+    if (title === '' || author === '' || editYear === '') {
+        viewbook.getMessage('Введите правильную информацию', 'error');
+    } else {
+        viewbook.addBook(book);
+        viewbook.getMessage('Книга добавлена', 'ok');
+        viewbook.clear();
+        viewbook.deleteBook();
+    }
+
+    event.preventDefault();
+});
+
+
+
+
+// Viewbook.prototype.deleteBook();
+
+document.querySelector('#box').addEventListener('submit', function(event){
+    var title = document.querySelector('#travel-title').value;
+    var edition = document.querySelector('#travel-edition').value;
+    var editYear = document.querySelector('#travel-editYear').value;
+
+    var travelbook = new TravelBook(title, edition, editYear);
+    var viewbook = new ViewTravel();
+
+    if(title === '' || edition === '' || editYear === ''){
         viewbook.getMessage('Введите правильную информацию', 'error');
     } else{
-        viewbook.addBook(book);
+        viewbook.addBook(travelbook);
         viewbook.getMessage('Книга добавлена', 'ok');
         viewbook.clear();
     }
@@ -17,7 +42,13 @@ document.querySelector('#books').addEventListener('submit', function(event){
     event.preventDefault();
 });
 
-
+document.querySelector('ul').onclick = function (e) {
+    var btn = e.target.closest('.delete');
+    if (!btn) {
+        return;
+    }
+    btn.parentElement.remove();
+};
 
 
 
