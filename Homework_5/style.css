@@ -1,0 +1,28 @@
+*{
+    margin: auto auto;
+    box-sizing: border-box;
+}
+.container{
+    width: 400px;
+    border: 2px solid grey;
+    background-color: lightcoral;
+    margin-top: 50px;
+
+}
+.button-box{
+    display: flex;
+    justify-content: space-around;
+}
+button{
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+}
+#display{
+    width: 200px;
+    height: 60px;
+    border: 1px solid black;
+    font-size: 30px;
+    text-align: right;
+    background-color: lightblue;
+}
