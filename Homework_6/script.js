@@ -13,12 +13,12 @@ let remains = document.getElementById('remains');//деление с остат�
 let data = ['','',];//массив 
 
 //функции операций
-let add = function(a, b) {return a + b;};
-let differ = function(a, b) {return a - b;};
-let multiply = function(a, b) {return a * b;};
-let divide = function(a, b) {return a / b;};
-let modul = function(a, b) {return a % b;};
-let sqrt = function(a, b) {return a ** b;};
+let add = (a, b) => a + b;
+let differ = (a, b) => a - b;
+let multiply = (a, b) => a * b;
+let divide = (a, b) => a / b;
+let modul = (a, b) => a % b;
+let sqrt = (a, b) => a ** b;
 
 
 /*Ввод данных на экран*/
@@ -49,16 +49,20 @@ equal.addEventListener('click', function(){
 
     if(data[1] === '+'){
         let sum = add(parseFloat(data[0]), parseFloat(data[2]));
-        display.value = sum;
+        display.value = parseFloat(sum.toFixed(9));
     }else if(data[1] === '-'){
         let diff = differ(parseFloat(data[0]), parseFloat(data[2]));
-        display.value = diff;
+        display.value = parseFloat(diff);
     }else if(data[1] === '*'){
         let multi = multiply(parseFloat(data[0]), parseFloat(data[2]));
-        display.value = multi;
+        display.value = parseFloat(multi);
     }else if(data[1] === '/'){
-        let div = divide(parseFloat(data[0]), parseFloat(data[2]));
-        display.value = div;
+        if(data[2] != 0){
+            let div = divide(parseFloat(data[0]), parseFloat(data[2]));
+            display.value = parseFloat(div.toFixed(9));
+        }else{
+            display.value = 'Error';
+        }    
     }else if(data[1] === '%'){
         let mod = modul(parseFloat(data[0]), parseFloat(data[2]));
         display.value = mod;
@@ -93,10 +97,15 @@ function clearHist(){
 function radToDeg(){
     display.value = parseFloat((display.value * 180) / Math.PI);
 }
+
+
+
+
+
 /*Синус угла введенного в градусах*/
 sinus.addEventListener('click', function(){
     let sin = Math.sin(parseFloat((display.value * Math.PI) / 180));
-    display.value = sin;
+    display.value = parseFloat(sin.toFixed(9));
     writeHistory();
     setTimeout(clearDisp, 1500);
 
@@ -104,21 +113,21 @@ sinus.addEventListener('click', function(){
 /*Косинус угла введенного в градусах*/
 cosinus.addEventListener('click', function(){
     let cos = Math.cos(parseFloat((display.value * Math.PI) / 180));
-    display.value = cos;
+    display.value = parseFloat(cos.toFixed(9));
     writeHistory();
     setTimeout(clearDisp, 1500);
 });
 /*Тангенс угла введенного в градусах*/
 tg.addEventListener('click', function(){
     let tg = Math.tan(parseFloat((display.value * Math.PI) / 180));
-    display.value = tg;
+    display.value = parseFloat(tg.toFixed(9));
     writeHistory();
     setTimeout(clearDisp, 1500);
 });
 /*Котангенс угла введенного в градусах*/
 ctg.addEventListener('click', function(){
     let ctg = 1 / (Math.tan(parseFloat((display.value * Math.PI) / 180)));
-    display.value = ctg;
+    display.value = parseFloat(ctg.toFixed(9));
     writeHistory();
     setTimeout(clearDisp, 1500);
 });
