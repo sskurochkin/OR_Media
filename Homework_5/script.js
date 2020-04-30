@@ -8,7 +8,7 @@ var isGoing = true;
 document.timer.display.value = '0.0.0';
 
 
-
+//Старт/Стоп
 start.addEventListener('click', function(event){
     if (start.textContent == 'Start'){
         start.textContent = 'Stop';        
@@ -18,7 +18,7 @@ start.addEventListener('click', function(event){
         start.textContent = 'Start';
     }
 });
-
+//Функция секундомера
 function goTime(){     
     if (isGoing == true){
             if (milisec > 8) {
@@ -34,7 +34,7 @@ function goTime(){
         }       
         document.timer.display.value = minutes + "." + seconds + "." + milisec;
 }
-
+//Запуск секундомера
 start.addEventListener('click', function(event){
     if (start.textContent == 'Stop'){
         IDint = setInterval(goTime, 100);
@@ -47,12 +47,25 @@ start.addEventListener('click', function(event){
     }
 });
 
-
+//Запись времени в историю и удаление строки из истории
 function writeTime(){
     var timeNow = document.createElement('p');
-    timeNow.innerHTML = document.timer.display.value;
-    box[0].appendChild(timeNow);
+    timeNow.innerHTML = document.timer.display.value + ' '
+    + '<button class="delete">Удалить запись</button>';
+    box[0].append(timeNow);
+
+    //удаление записей
+    var del = document.getElementsByClassName('delete'); 
+    
+    for( let i = 0; i < del.length; i++){
+    del[i].addEventListener('click', function(){
+        this.parentElement.remove();
+        
+    });
+    }
 }
+
+//Сброс секундомера
 reset.addEventListener('click', function(){
     writeTime();
    
@@ -61,4 +74,5 @@ reset.addEventListener('click', function(){
     milisec = 0;
     isGoing = false;
     document.timer.display.value = '0.0.0';
+    start.textContent = 'Start';
 });
