@@ -1,6 +1,7 @@
 var start = document.getElementById('start');
 var reset = document.getElementById('reset');
 var box = document.getElementsByClassName('container');
+var lap = document.getElementById('lap');
 var minutes = 0;
 var seconds = 0;
 var milisec = 0;
@@ -64,11 +65,13 @@ function writeTime(){
     });
     }
 }
+//Круг
+lap.addEventListener('click', function(){
+    writeTime();
+});
 
 //Сброс секундомера
 reset.addEventListener('click', function(){
-    writeTime();
-   
     minutes = 0;
     seconds = 0;
     milisec = 0;
