@@ -1,0 +1,26 @@
+*{
+    box-sizing: border-box;
+    margin: auto auto;
+}
+form{
+    width: 250px;
+    margin-top: 50px;
+}
+.container{
+    margin-top: 40px;
+    width: 500px;
+    background-color: rgb(217, 223, 191);
+    padding: 20px;
+}
+.text{
+    margin: 10px;
+}
+p{
+    text-align: center;
+    font-size: 20px;
+
+}
+#start{
+    display: block;
+    margin-top: 5px;
+}
