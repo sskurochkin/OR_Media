@@ -7,26 +7,41 @@
     <title>Constr</title>
 </head>
 <body>
-    <form action="" method="GET">
-        <label for="name">Название<input type="text" name="name"></label>
-        <label for="">Вид<input type="text"></label>
-        <label for="">Возраст<input type="text"></label>
-        <label for="list">Лиственное<input type="checkbox" name="list" id="list" checked></label>
-        <label for="">Первооткрыватель<input type="text"></label>
-        <label for="">Ареал произростания<input type="text"></label>
+    <form action="">
+        <label for="name">Название<input type="text" name="name" id="name"></label>
+        <label for="">Вид<input type="text" id="vid"></label>
+        <label for="">Возраст<input type="text" id="years"></label>
+        <label for="list">Лиственное<input type="checkbox" name="list" id="list"></label>
+        <label for="">Первооткрыватель<input type="text" id="opener"></label>
+        <label for="">Ареал произростания<input type="text" id="where"></label>
         <label for="select">Область применения
-            <select name="select">
+            <select name="select" id="sphere">
                 <option selected></option>
-                <option value="sel">Сельское хозяйство</option>
-                <option value="industry">Промышленность</option>
-                <option value="med">Медицина</option>
+                <option value="Сельское хозяйство">Сельское хозяйство</option>
+                <option value="Промышленность">Промышленность</option>
+                <option value="Медицина">Медицина</option>
             </select>
         </label>
-        <button type="submit">Сохранить</button>
+        <button id="save">Сохранить</button>
         <button type="reset">Очиcтить</button>
-        
+        </form>
+        <div class="table">
+            <table id="plant-list">
+                <tr class="title">
+                    <td>Название</td>
+                    <td>Вид</td>
+                    <td>Возраст</td>
+                    <td>Лиственное</td>
+                    <td>Первооткрыватель</td>
+                    <td>Ареал</td>
+                    <td>Применение</td>
+                    <td>Удалить</td>
+                </tr>
+            </table>
+            </div>
 
 
-    </form>
+    
+    <script src="create.js"></script>
 </body>
 </html>
