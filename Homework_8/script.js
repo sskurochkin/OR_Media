@@ -98,68 +98,97 @@ let questions = [
 
 let quiz = document.querySelector('#quiz-field');
 let start = document.querySelector('#start');
+let gotest = document.querySelector('#go');
+let i = 0;
 let resultQuiz;
 let answers = [];
 let newSpeech = new SpeechRecognition();
 newSpeech.continuous = true;
 // newSpeech.interimResults = true;
 
-function quest(){
-    let i = 0;
-    var timer = setInterval(function() {
-        if (i >= questions.length) {
-        
+
+gotest.addEventListener('click', function(){
+    
+
+    if (i >= questions.length) {
         newSpeech.stop();
         console.log('stop speech');
         start.textContent ='Квиз завершен';       
-        clearInterval(timer);
+        // clearTimeout(timer);
         setTimeout(yesAnswer, 500);
+
+    } else {
+        newSpeech.start();
+        console.log('start');
+        let thisQuest = document.createElement('p');
+        thisQuest.innerText = questions[i];
+        quiz.appendChild(thisQuest);  
+        i++;
+        setTimeout(function(){
+            newSpeech.stop();
+            console.log('stop speech');
+        }, 2000);
+    }
+});
+
+
+// function quest(){
+//     let i = 0;
+//     var timer = setInterval(function() {
         
+        
+//         if (i >= questions.length) {
+//             newSpeech.stop();
+//             console.log('stop speech');
+//             start.textContent ='Квиз завершен';       
+//             clearTimeout(timer);
+//             setTimeout(yesAnswer, 500);
 
-        } else {
-            let thisQuest = document.createElement('p');
-            thisQuest.innerText = questions[i];
-            quiz.appendChild(thisQuest);  
-            i++;
-        }
-    }, 4000);
+//         } else {
+//             let thisQuest = document.createElement('p');
+//             thisQuest.innerText = questions[i];
+//             quiz.appendChild(thisQuest);  
+//             i++;
+//         }
+//     }, 3000);
+// }
 
 
-}
 function startQuiz(){
     if (start.textContent == 'Начать квиз'){
         start.textContent = 'Отвечайте на вопросы';        
-        newSpeech.start();
-        console.log('start speech');
+        // newSpeech.start();
+        // console.log('start speech');
     }}
 
 function yesAnswer(){
-    answerYes = Object.values(resultQuiz).map(v => Object.values(v));
-    console.log(answerYes);
-    answerYes = answerYes.every(function(elem){
-        return elem == 'да';
-    });
+    // answerYes = Object.values(resultQuiz).map(v => Object.values(v));
+    // console.log(answerYes);
+    // answerYes = answerYes.every(function(elem){
+    //     return elem == 'да';
+    // });
     alert('Количество ответов "ДА"'+ ' - '+ answerYes.length);
 }
    
 start.addEventListener('click', function(){
     startQuiz();
-    if(start.textContent == 'Отвечайте на вопросы'){
-        quest();
-    }
+    // if(start.textContent == 'Отвечайте на вопросы'){
+    //     quest();
+    // }
     
 });
 
     newSpeech.addEventListener('result', (event) => {
     
-    resultQuiz = event.results;
+    resultQuiz = event.results[0][0].transcript;
     // console.log(typeof(resultQuiz));
-    // console.log(event);
-    // // console.log(event.results[0][0].transcript);
-    // // console.log(typeof(event.results));
+    // console.log(resultQuiz);
     // answers = answers.push(resultQuiz);
-    //     return elem == 'да';
-    // });
+    // // // console.log(event.results[0][0].transcript);
+    // // // console.log(typeof(event.results));
+    // // answers = answers.push(resultQuiz);
+    // //     return elem == 'да';
+    // // });
     // console.log(answers);
 
     // answerYes = resultQuiz.filter(function(elem){
