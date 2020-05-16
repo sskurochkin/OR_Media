@@ -16,3 +16,10 @@ input[type="text"], input[type="checkbox"], select{
     top: 0;
     bottom: 0;
 }
+#plant-list{
+    border: 1px black solid;
+}
+td:not(.title td){
+    padding: 5px;
+    border: 1px solid black;
+}
