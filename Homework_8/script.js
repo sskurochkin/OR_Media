@@ -86,116 +86,83 @@ if(SpeechRecognition){
     console.log('no')
 }
 
-
+// Квиз из 10 вопросов
 
 let questions = [
-    'Вам есть 18 лет?',
-    '2 умножить на 2 - 4?',
-    'Столица Италии - Рим. Верно?',
-    'Колумб открыл Америку?',
-    // 'Кто следующий президент Беларуси?',
+    '1. Вам есть 18 лет?',
+    '2. 2 умножить на 2 - 4?',
+    '3. Кто следующий президент Беларуси?',
+    '4. Столица Италии - Милан. Верно?',
+    '5. Колумб открыл Америку?',
+    '6. Американцы были на луне?',
+    '7. Легко ли изучать JavaScript?',
+    '8. Любите ли вы покушать перед сном?',
+    '9. Дональд Трамп - работа русских?',
+    '10. Вы смотрели сериал "Игра престолов"?',    
 ];
 
 let quiz = document.querySelector('#quiz-field');
 let start = document.querySelector('#start');
 let gotest = document.querySelector('#go');
 let i = 0;
+let answerYes = [];
 let resultQuiz;
-let answers = [];
+let answers = new Set(); // Записываются ответы
 let newSpeech = new SpeechRecognition();
 newSpeech.continuous = true;
-// newSpeech.interimResults = true;
 
-
-gotest.addEventListener('click', function(){
-    
-
-    if (i >= questions.length) {
-        newSpeech.stop();
-        console.log('stop speech');
-        start.textContent ='Квиз завершен';       
-        // clearTimeout(timer);
-        setTimeout(yesAnswer, 500);
-
-    } else {
-        newSpeech.start();
-        console.log('start');
-        let thisQuest = document.createElement('p');
-        thisQuest.innerText = questions[i];
-        quiz.appendChild(thisQuest);  
-        i++;
-        setTimeout(function(){
+function quest(){
+    let i = 0;
+    var timer = setInterval(function() {        
+        
+        if (i >= questions.length) {
             newSpeech.stop();
             console.log('stop speech');
-        }, 2000);
-    }
-});
+            start.textContent ='Квиз завершен';       
+            clearTimeout(timer);
+            console.log(answers);
+            answerYes = Array.from(answers);
+            var arrYes = answerYes.filter(function(elem){
+                return elem == ' да' || elem == ' нет да' || elem == ' да да' || elem == 'нет да'
+                || elem == 'да' || elem == 'да да';
+            });
+            console.log(arrYes);
+            setTimeout(function(){
+                alert('Количество ответов "ДА"'+ ' - '+ arrYes.length);
+            }, 500);
 
-
-// function quest(){
-//     let i = 0;
-//     var timer = setInterval(function() {
-        
-        
-//         if (i >= questions.length) {
-//             newSpeech.stop();
-//             console.log('stop speech');
-//             start.textContent ='Квиз завершен';       
-//             clearTimeout(timer);
-//             setTimeout(yesAnswer, 500);
-
-//         } else {
-//             let thisQuest = document.createElement('p');
-//             thisQuest.innerText = questions[i];
-//             quiz.appendChild(thisQuest);  
-//             i++;
-//         }
-//     }, 3000);
-// }
-
+        } else {
+            let thisQuest = document.createElement('p');    
+            thisQuest.innerText = questions[i];
+            quiz.appendChild(thisQuest);  
+            i++;
+        }
+    }, 5000);
+}
 
 function startQuiz(){
     if (start.textContent == 'Начать квиз'){
         start.textContent = 'Отвечайте на вопросы';        
-        // newSpeech.start();
-        // console.log('start speech');
+        console.log('start speech');
     }}
-
-function yesAnswer(){
-    // answerYes = Object.values(resultQuiz).map(v => Object.values(v));
-    // console.log(answerYes);
-    // answerYes = answerYes.every(function(elem){
-    //     return elem == 'да';
-    // });
-    alert('Количество ответов "ДА"'+ ' - '+ answerYes.length);
-}
    
 start.addEventListener('click', function(){
     startQuiz();
-    // if(start.textContent == 'Отвечайте на вопросы'){
-    //     quest();
-    // }
-    
+    if(start.textContent == 'Отвечайте на вопросы'){
+        quest();
+        setTimeout(function(){
+            newSpeech.start();
+        }, 4500);
+    }    
 });
 
-    newSpeech.addEventListener('result', (event) => {
+newSpeech.addEventListener('result', (event) => {
     
-    resultQuiz = event.results[0][0].transcript;
-    // console.log(typeof(resultQuiz));
-    // console.log(resultQuiz);
-    // answers = answers.push(resultQuiz);
-    // // // console.log(event.results[0][0].transcript);
-    // // // console.log(typeof(event.results));
-    // // answers = answers.push(resultQuiz);
-    // //     return elem == 'да';
-    // // });
-    // console.log(answers);
-
-    // answerYes = resultQuiz.filter(function(elem){
-    //     return elem == 'да';
-    // });
-    // console.log(answerYes.lenth);
-    return resultQuiz;
+    resultQuiz = event.results;
+    for( let elem of resultQuiz){
+        console.log(elem[0].transcript);
+        answers.add(elem[0].transcript);
+    }
 });  
 
 
