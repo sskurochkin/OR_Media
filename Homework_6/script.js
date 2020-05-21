@@ -10,7 +10,7 @@ let tg = document.getElementById('tg');
 let ctg = document.getElementById('ctg');
 let remains = document.getElementById('remains');//деление с остатком
 
-let data = ['','',];//массив 
+let data = ['','',]; //массив 
 
 //функции операций
 let add = (a, b) => a + b;
